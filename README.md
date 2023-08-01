@@ -12,6 +12,8 @@ django-admin startproject mahora
 python manage.py startapp tienda
 # QUINTO:
 # En nuestro archivo settings en INSTALLED_APPS agregamos 'tienda',tambien en DATABASES ingresamos  los parametros para comunicarnos con nuestra base de datos.
+# instalamos la libreria dotenv para leer las variables del archivo .env con:
+pip install python-dotenv
 # instalamos la libreria pscopg2 para comunicarnos con nuestra BD:
 pip install psycopg2
 # SEXTO:
@@ -35,7 +37,14 @@ path('registro', RegistroUsuarioApiView.as_view())
 from rest_framework_simplejwt.views import TokenObtainPairView
 # creamos la ruta login:
  path('login', TokenObtainPairView.as_view())
- 
+# Instalamos cloudinary para poder guardar nuestras imagenes de la tabla producto  con:
+pip install cloudinary 
+# en nuestro archivo .env ingresamos nuestro CLOUDINARY_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET
+# en el settings.py llamamos lo ingresado en nuestro archivo.env 
+# creamos los models categorias y productos y hacemos la migracion
+# creamos los serializadores y hacemos nuestras vistas genericas con los metodos GET,POST,PUT Y DELETE
+
+
 
 
 
