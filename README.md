@@ -31,7 +31,11 @@ python .\manage.py createsuperuser
 # en nuestro archivo urls.py de nuestra app tienda importamos la vista RegistroUsuarioApiView
 # creamos nuestra primera ruta para verla en el postman:
 path('registro', RegistroUsuarioApiView.as_view())
-
+# importamos en urls.py de nuestra tienda
+from rest_framework_simplejwt.views import TokenObtainPairView
+# creamos la ruta login:
+ path('login', TokenObtainPairView.as_view())
+ 
 
 
 
