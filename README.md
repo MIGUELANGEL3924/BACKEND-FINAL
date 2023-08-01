@@ -24,8 +24,14 @@ pip install djangorestframework-simplejwt
 # corri la migracion con python .\manage.py migrate tienda
 # corri las migraciones faltantes con python .\manage.py migrate     
 # para ver sin las migraciones se ejecutaron correctamente utilizamos el comando:
- python .\manage.py showmigrations
- 
+python .\manage.py showmigrations
+# creamos nuestro super usuario con el siguiente comando:
+python .\manage.py createsuperuser
+# creamos nuestra vista RegistroUsuarioApiView y nuestro serializador RegistroUsuarioSerializer
+# en nuestro archivo urls.py de nuestra app tienda importamos la vista RegistroUsuarioApiView
+# creamos nuestra primera ruta para verla en el postman:
+path('registro', RegistroUsuarioApiView.as_view())
+
 
 
 
