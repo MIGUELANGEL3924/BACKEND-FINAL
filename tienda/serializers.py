@@ -8,6 +8,13 @@ class RegistroUsuarioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MostrarUsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UsuarioModel
+        exclude = ['password', 'is_staff', 'user_permissions',
+                   'groups', 'last_login', 'is_superuser']
+
+
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = CategoriaModel

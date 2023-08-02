@@ -43,6 +43,7 @@ pip install cloudinary
 # en el settings.py llamamos lo ingresado en nuestro archivo.env 
 # creamos los models categorias y productos y hacemos la migracion
 # creamos los serializadores y hacemos nuestras vistas genericas con los metodos GET,POST,PUT Y DELETE
+# cree la vista perfil que nos mostrara informacion del usuario logeado al ingresar su token
 
 
 

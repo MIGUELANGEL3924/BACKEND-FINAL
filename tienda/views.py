@@ -1,4 +1,4 @@
-from rest_framework import generics, response, status, request
+from rest_framework import generics, response, status, request, permissions
 from .models import *
 from .serializers import *
 
@@ -23,6 +23,21 @@ class RegistroUsuarioApiView(generics.CreateAPIView):
                 'message': 'Error al registrar al usuario',
                 'content': serializador.errors
             }, status=status.HTTP_400_BAD_REQUEST)
+
+# esta clase devolvera el perfil del usuario ,al ingresar la token de acceso proporcionada por login
+
+
+class PerfilUsuarioApiView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(sel, request: request.Request):
+        print(request.user)
+        print(request.auth)
+        usuario_encontrado = MostrarUsuarioSerializer(instance=request.user)
+        return response.Response(data={
+            'message': f'Bienvenido, {request.user}',
+            'content': usuario_encontrado.data
+        })
 
 # esta clase mostrara todas las categorias creadas
 
@@ -79,3 +94,19 @@ class ActualizarCategoria(generics.RetrieveUpdateAPIView):
                 'message': 'Error al actualizar la categoria',
                 'content': data_serializada.errors
             }, status=status.HTTP_400_BAD_REQUEST)
+
+# esta clase elimina una categoria
+
+
+class EliminarCategoria(generics.DestroyAPIView):
+    def delete(self, request, id):
+        resultado = CategoriaModel.objects.filter(id=id).first()
+        if resultado is None:
+            return response.Response(data={
+                'message': 'La categoría no existe'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        resultado.delete()
+        return response.Response(data={
+            'message': 'Categoría eliminada exitosamente'
+        }, status=status.HTTP_200_OK)
