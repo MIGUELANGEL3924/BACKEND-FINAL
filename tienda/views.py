@@ -1,6 +1,7 @@
 from rest_framework import generics, response, status, request, permissions
 from .models import *
 from .serializers import *
+from .permissions import SoloAdministrador
 
 # clase para registrar un usuario
 
@@ -50,6 +51,7 @@ class MostrarCategoriasApiView(generics.ListAPIView):
 
 
 class CrearCategoriaApiView(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated, SoloAdministrador]
     queryset = CategoriaModel.objects.all()
     serializer_class = CategoriaSerializer
 
@@ -57,6 +59,8 @@ class CrearCategoriaApiView(generics.CreateAPIView):
 
 
 class MostrarUnaCategoriaApiView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request, id):
         resultado = CategoriaModel.objects.filter(id=id).first()
         if resultado is None:
@@ -73,6 +77,8 @@ class MostrarUnaCategoriaApiView(generics.RetrieveAPIView):
 
 
 class ActualizarCategoria(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated, SoloAdministrador]
+
     def put(self, request: request.Request, id):
         resultado = CategoriaModel.objects.filter(id=id).first()
         if resultado is None:
@@ -99,6 +105,8 @@ class ActualizarCategoria(generics.RetrieveUpdateAPIView):
 
 
 class EliminarCategoria(generics.DestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated, SoloAdministrador]
+
     def delete(self, request, id):
         resultado = CategoriaModel.objects.filter(id=id).first()
         if resultado is None:

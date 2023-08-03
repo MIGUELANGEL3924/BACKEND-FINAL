@@ -44,7 +44,7 @@ pip install cloudinary
 # creamos los models categorias y productos y hacemos la migracion
 # creamos los serializadores y hacemos nuestras vistas genericas con los metodos GET,POST,PUT Y DELETE
 # cree la vista perfil que nos mostrara informacion del usuario logeado al ingresar su token
-
+# cree el archivo permissions.py donde configure los permisos con la clase SoloAdministrador
 
 
 

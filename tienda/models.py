@@ -15,6 +15,8 @@ class UsuarioModel(AbstractBaseUser, PermissionsMixin):
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    tipoUsuario = models.CharField(max_length=100, choices=[(
+        'ADMIN', 'ADMIN'), ('CLIENTE', 'CLIENTE')], default='ADMIN')
 
     createdAt = models.DateTimeField(auto_now_add=True, db_column='created_at')
 
