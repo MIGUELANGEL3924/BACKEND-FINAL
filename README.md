@@ -45,6 +45,8 @@ pip install cloudinary
 # creamos los serializadores y hacemos nuestras vistas genericas con los metodos GET,POST,PUT Y DELETE
 # cree la vista perfil que nos mostrara informacion del usuario logeado al ingresar su token
 # cree el archivo permissions.py donde configure los permisos con la clase SoloAdministrador
+# para que el metodo crearProducto funcione bien instale la libreria pillow:
+pip install Pillow
 
 
 

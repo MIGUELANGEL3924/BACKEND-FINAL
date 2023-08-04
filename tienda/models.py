@@ -47,7 +47,6 @@ class ProductoModel(models.Model):
     precio = models.FloatField()
     cantidad = models.SmallIntegerField('Cantidad o Stock', default=1)
     imagen = CloudinaryField('producto', unique=True, null=False)
-    disponible = models.BooleanField(default=True)
     createdAt = models.DateTimeField(auto_now_add=True, db_column='created_at')
 
     categoria = models.ForeignKey(

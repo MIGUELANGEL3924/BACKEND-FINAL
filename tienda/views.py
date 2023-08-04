@@ -118,3 +118,29 @@ class EliminarCategoria(generics.DestroyAPIView):
         return response.Response(data={
             'message': 'Categoría eliminada exitosamente'
         }, status=status.HTTP_200_OK)
+
+# esta clase creara un producto:
+
+
+class CrearProductoApiView(generics.CreateAPIView):
+    def post(self, request: request.Request):
+        form_data = request.data
+        dic_data = {
+            'nombre': form_data.get('nombre'),
+            'precio': form_data.get('precio'),
+            'cantidad': form_data.get('cantidad'),
+            'imagen': request.FILES.get('imagen'),
+            'categoria': form_data.get('categoria')
+        }
+        serializador = ProductoSerializer(data=dic_data)
+        try:
+            serializador.is_valid(raise_exception=True)
+            serializador.save()
+            return response.Response(data={
+                'message': 'Producto creado exitosamente'
+            }, status=status.HTTP_201_CREATED)
+        except Exception as err:
+            return response.Response(data={
+                'message': 'Error al crear el producto',
+                'content': err.args
+            }, status=status.HTTP_400_BAD_REQUEST)
