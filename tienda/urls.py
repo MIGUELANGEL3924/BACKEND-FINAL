@@ -12,7 +12,10 @@ urlpatterns = [
     path('crearCategoria', CrearCategoriaApiView.as_view()),
     path('actualizarCategoria/<int:id>', ActualizarCategoria.as_view()),
     path('eliminarCategoria/<int:id>', EliminarCategoria.as_view()),
-    path('crearProducto', CrearProductoApiView.as_view())
-
+    path('mostrarProductos', ListaProductosApiView.as_view()),
+    path('mostrarProducto/<int:id>', MostrarUnProductoApiView.as_view()),
+    path('crearProducto', CrearProductoApiView.as_view()),
+    path('actualizarProducto/<int:id>', ActualizarProductoApiView.as_view()),
+    path('eliminarProducto/<int:id>', EliminarProductoApiView.as_view())
 
 ]
