@@ -47,6 +47,16 @@ pip install cloudinary
 # cree el archivo permissions.py donde configure los permisos con la clase SoloAdministrador
 # para que el metodo crearProducto funcione bien instale la libreria pillow:
 pip install Pillow
+# instalamos la libreria whitenoise para trabajar con archivos estaticos:
+pip install whitenoise
+# en el archivo settings.py en MIDDLEWARE = en la segunda linea agregamos:
+'whitenoise.middleware.WhiteNoiseMiddleware',
+# y en la parte final de settings.py colocamos esto:
+STATIC_ROOT = BASE_DIR / 'staticos'
+# para poder tener nuestro backend en produccion instalamos:
+pip install gunicorn
+# por ultimo creamos nuestro archivo requeriments.txt
+pip freeze > requirements.txt
 
 
 
