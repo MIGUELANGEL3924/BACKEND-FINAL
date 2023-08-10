@@ -1,11 +1,11 @@
+from django.shortcuts import render, HttpResponse
 from rest_framework import generics, response, status, request, permissions
 from .models import *
 from .serializers import *
 from .permissions import SoloAdministrador
 
+
 # clase para registrar un usuario
-
-
 class RegistroUsuarioApiView(generics.CreateAPIView):
     def post(self, request: request.Request):
         serializador = RegistroUsuarioSerializer(data=request.data)
